@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import TodoItems from "./TodoItems";
  
 class TodoList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            items = []
+            items: []
         };
 
         this.addItem = this.addItem.bind(this);
@@ -13,7 +14,7 @@ class TodoList extends Component {
 
     addItem(e) {
         if (this._inputElement.value !== "") {
-          var newItem = {
+          const newItem = {
             text: this._inputElement.value,
             key: Date.now()
           };
@@ -27,7 +28,7 @@ class TodoList extends Component {
           this._inputElement.value = "";
         }
          
-        console.log(this.state.items);
+        console.log("Items: " + this.state.items.text);
            
         e.preventDefault();
     }
@@ -37,12 +38,13 @@ class TodoList extends Component {
         <div className="todoListMain">
             <div className="header">
                 <form onSubmit={this.addItem}>
-                <input ref={(a) => this._inputElement = a} 
-                  placeholder="enter task">
-                </input>
-                <button type="submit">add</button>
-            </form>
+                  <input ref={(a) => this._inputElement = a} 
+                    placeholder="enter task">
+                  </input>
+                  <button type="submit">add</button>
+                </form>
             </div>
+            <TodoItems entries={this.state.items}/>
         </div>
         );
     }
