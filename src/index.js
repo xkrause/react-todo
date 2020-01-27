@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "./TodoList.css";
 import TodoList from './TodoList';
-  
+
 const destination = document.querySelector("#container");
   
 ReactDOM.render(
